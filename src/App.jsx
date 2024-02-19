@@ -71,12 +71,14 @@ export default function App() {
       };
     });
   }
+  const ctxValue = {
+    items: shopingCart.items,
+    addItemToCart: handleAddItemToCart,
+    updateItemQuantity: handleUpdateCartItemQuantity,
+  };
   return (
-    <CartContext.Provider value={{ items: [] }}>
-      <Header
-        cart={shopingCart}
-        onUpdateCartItemQuantity={handleUpdateCartItemQuantity}
-      ></Header>
+    <CartContext.Provider value={ctxValue}>
+      <Header></Header>
       <Shop>
         {DUMMY_PRODUCTS.map((product) => (
           <li key={product.id}>
